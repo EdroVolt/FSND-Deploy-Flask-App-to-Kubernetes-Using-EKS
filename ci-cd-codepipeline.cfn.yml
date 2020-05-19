@@ -53,7 +53,7 @@ Parameters:
 
   KubectlRoleName:
     Type: String
-    Default: edro
+    Default: UdacityFlaskDeployCBKubectlRole
     Description: edro
     MinLength: 3
     MaxLength: 100
