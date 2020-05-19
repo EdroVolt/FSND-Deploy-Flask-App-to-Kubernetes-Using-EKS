@@ -3,32 +3,29 @@ AWSTemplateFormatVersion: 2010-09-09
 
 Description: EKSWSV1
 
-
 Parameters:
-
   EksClusterName:
     Type: String
-    Description: The name of the EKS cluster created
-    Default: 
+    Description: simple-jwt-api
     MinLength: 1
     MaxLength: 100
-    ConstraintDescription: You must enter the EKS cluster name
+    ConstraintDescription: simple-jwt-api
 
   GitSourceRepo:
     Type: String
-    Description: GitHub source repository - must contain a Dockerfile and buildspec.yml in the base
-    Default: 
+    Description: https://github.com/EdroVolt/FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS.git
+    Default: FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS
     MinLength: 1
     MaxLength: 100
-    ConstraintDescription: You must enter a GitHub repository name
+    ConstraintDescription: FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS
 
   GitBranch:
     Type: String
     Default: master
-    Description: GitHub git repository branch - change triggers a new build
+    Description: master
     MinLength: 1
     MaxLength: 100
-    ConstraintDescription: You must enter a GitHub repository branch name
+    ConstraintDescription: master
 
   GitHubToken:
     Type: String
@@ -40,11 +37,11 @@ Parameters:
 
   GitHubUser:
     Type: String
-    Default:
-    Description: GitHub username or organization
+    Default: EdroVolt
+    Description: EdroVolt
     MinLength: 3
     MaxLength: 100
-    ConstraintDescription: You must enter a GitHub username or organization
+    ConstraintDescription: EdroVolt
 
   CodeBuildDockerImage:
     Type: String
@@ -56,12 +53,11 @@ Parameters:
 
   KubectlRoleName:
     Type: String
-    Default: 
-    Description: IAM role used by kubectl to interact with EKS cluster
+    Default: edro
+    Description: edro
     MinLength: 3
     MaxLength: 100
-    ConstraintDescription: You must enter a kubectl IAM role
-
+    ConstraintDescription: edro
 
 Metadata:
   AWS::CloudFormation::Interface:
@@ -101,9 +97,7 @@ Metadata:
       EksClusterName:
         default: EKS cluster name
 
-
 Resources:
-
   EcrDockerRepository:
     Type: AWS::ECR::Repository
     DeletionPolicy: Retain
@@ -256,25 +250,25 @@ Resources:
                 Effect: Allow
                 Action:
                   - sts:AssumeRole
-              - Resource: '*'
+              - Resource: "*"
                 Effect: Allow
                 Action:
                   - eks:Describe*
-              - Resource: '*'
+              - Resource: "*"
                 Effect: Allow
                 Action:
                   - ssm:GetParameters
-              - Resource: '*'
+              - Resource: "*"
                 Effect: Allow
                 Action:
                   - logs:CreateLogGroup
                   - logs:CreateLogStream
                   - logs:PutLogEvents
-              - Resource: '*'
+              - Resource: "*"
                 Effect: Allow
                 Action:
                   - ecr:GetAuthorizationToken
-              - Resource: '*'
+              - Resource: "*"
                 Effect: Allow
                 Action:
                   - ec2:CreateNetworkInterface
