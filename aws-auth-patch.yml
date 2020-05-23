@@ -4,11 +4,11 @@ data:
     - groups:
       - system:bootstrappers
       - system:nodes
-      rolearn: arn:aws:iam::785488069635:role/edro
+      rolearn: arn:aws:iam::988007256003:role/<EXISTENT_ROLE_INFORMATION>
       username: system:node:{{EC2PrivateDNSName}}
     - groups:
       - system:masters
-      rolearn: arn:aws:iam::785488069635:role/UdacityFlaskDeployCBKubectlRole
+      rolearn: arn:aws:iam::988007256003:role/UdacityFlaskDeployCBKubectlRole
       username: build
   mapUsers: |
     []
