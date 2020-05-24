@@ -1,0 +1,4 @@
+http://a9d646ec79d7011ea934706ef5cc6823-1414544922.us-east-2.elb.amazonaws.com/
+
+NAME             TYPE           CLUSTER-IP     EXTERNAL-IP                                                               PORT(S)        AGE     SELECTOR
+simple-jwt-api   LoadBalancer   10.100.0.110   a9d646ec79d7011ea934706ef5cc6823-1414544922.us-east-2.elb.amazonaws.com   80:30854/TCP   7m58s   app=simple-jwt-api
